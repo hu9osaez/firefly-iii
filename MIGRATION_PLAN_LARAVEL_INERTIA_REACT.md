@@ -24,12 +24,23 @@ resources/assets/
 │   │   ├── app.js (jQuery/Bootstrap)
 │   │   ├── app_vue.js (Vue 2)
 │   │   └── components/ (Vue 2 components)
-└── v2/ (Modern - AlpineJS)
+├── v2/ (Modern - AlpineJS)
+│   ├── vite.config.js
+│   ├── src/
+│   │   ├── pages/ (AlpineJS pages)
+│   │   ├── api/ (API clients)
+│   │   └── store/ (State management)
+└── v3/ (Nuevo - React + InertiaJS)
+    ├── package.json
     ├── vite.config.js
-    ├── src/
-    │   ├── pages/ (AlpineJS pages)
-    │   ├── api/ (API clients)
-    │   └── store/ (State management)
+    ├── js/
+    │   ├── app.jsx
+    │   ├── Layouts/
+    │   ├── Pages/
+    │   ├── Components/
+    │   └── Hooks/
+    └── css/
+        └── app.css
 ```
 
 ### Controladores y Rutas
@@ -61,12 +72,22 @@ resources/assets/
 ```bash
 # Instalar dependencias de InertiaJS
 composer require inertiajs/inertia-laravel
-npm install @inertiajs/react react react-dom @vitejs/plugin-react
+
+# Agregar v3 al workspace principal (package.json)
+# Agregar "resources/assets/v3" al array de workspaces
+
+# Instalar dependencias de React + Inertia para v3
+cd resources/assets/v3
+npm install @inertiajs/react react react-dom @vitejs/plugin-react laravel-vite-plugin
+
+# Comandos de desarrollo para v3
+npm run dev    # Servidor de desarrollo
+npm run build  # Build de producción
 ```
 
 #### 1.2 Configuración de Vite para React
 ```javascript
-// vite.config.js (nuevo)
+// resources/assets/v3/vite.config.js
 import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import react from '@vitejs/plugin-react'
@@ -74,7 +95,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [
     laravel({
-      input: ['resources/js/app.jsx'],
+      input: ['resources/assets/v3/js/app.jsx'],
       refresh: true,
     }),
     react(),
@@ -103,7 +124,9 @@ class HandleInertiaRequests extends Middleware
 
 #### 1.4 Estructura de Directorios React
 ```
-resources/
+resources/assets/v3/
+├── package.json
+├── vite.config.js
 ├── js/
 │   ├── app.jsx (punto de entrada)
 │   ├── Layouts/
@@ -123,11 +146,63 @@ resources/
     └── app.css
 ```
 
+#### 1.5 Configuración de Workspace NPM
+
+**Ventajas de la estructura con workspaces:**
+- ✅ **Total independencia** de v1 y v2 durante el desarrollo
+- ✅ **Dependencias específicas** sin conflictos entre versiones
+- ✅ **Builds separados** para cada frontend
+- ✅ **Compatibilidad total** con la arquitectura existente
+- ✅ **Mantenimiento individual** por versión
+- ✅ **Testing independiente** de cada frontend
+
+```json
+// package.json principal (raíz del proyecto)
+{
+  "scripts": {
+    "postinstall": "patch-package --error-on-fail"
+  },
+  "workspaces": [
+    "resources/assets/v1",
+    "resources/assets/v2",
+    "resources/assets/v3"
+  ],
+  "devDependencies": {
+    "postcss": "^8.4.47"
+  }
+}
+```
+
+```json
+// resources/assets/v3/package.json
+{
+  "name": "v3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "postinstall": "patch-package --error-on-fail"
+  },
+  "devDependencies": {
+    "@inertiajs/react": "^2.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "laravel-vite-plugin": "^2.0.0",
+    "patch-package": "^8.0.0",
+    "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
+```
+
 ### Fase 2: Migración de Componentes Core (Semanas 3-8)
 
 #### 2.1 Layout Principal
 ```jsx
-// resources/js/Layouts/AppLayout.jsx
+// resources/assets/v3/js/Layouts/AppLayout.jsx
 import { Head, Link } from '@inertiajs/react'
 
 export default function AppLayout({ children, title }) {
@@ -152,7 +227,7 @@ export default function AppLayout({ children, title }) {
 
 #### 2.2 Dashboard
 ```jsx
-// resources/js/Pages/Dashboard/Index.jsx
+// resources/assets/v3/js/Pages/Dashboard/Index.jsx
 import AppLayout from '@/Layouts/AppLayout'
 import { Head } from '@inertiajs/react'
 import DashboardBoxes from './Components/DashboardBoxes'
