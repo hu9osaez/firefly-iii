@@ -85,6 +85,7 @@
         "diglactic/laravel-breadcrumbs": "^10",
         "gdbots/query-parser": "^3.0",
         "guzzlehttp/guzzle": "^7.9",
+        "inertiajs/inertia-laravel": "*",
         "jc5/google2fa-laravel": "^2.0",
         "jc5/recovery": "^2",
         "laravel-notification-channels/pushover": "^4.0",

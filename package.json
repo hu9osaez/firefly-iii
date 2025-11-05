@@ -1,12 +1,16 @@
 {
-    "scripts": {
-        "postinstall": "patch-package --error-on-fail"
-    },
-    "workspaces": [
-        "resources/assets/v1",
-        "resources/assets/v2"
-    ],
-    "devDependencies": {
-        "postcss": "^8.4.47"
-    }
+  "scripts": {
+    "postinstall": "patch-package --error-on-fail",
+    "dev:v3": "npm run dev --workspace=resources/assets/v3",
+    "build:v3": "npm run build --workspace=resources/assets/v3",
+    "type-check:v3": "npm run type-check --workspace=resources/assets/v3"
+  },
+  "workspaces": [
+    "resources/assets/v1",
+    "resources/assets/v2",
+    "resources/assets/v3"
+  ],
+  "devDependencies": {
+    "postcss": "^8.4.47"
+  }
 }
