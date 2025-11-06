@@ -31,3 +31,4 @@ public/v2/i18n
 
 # ignore v3 build files
 resources/assets/v3/node_modules
+resources/assets/v3/public/build

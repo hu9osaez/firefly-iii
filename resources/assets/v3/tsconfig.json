@@ -1,0 +1,89 @@
+{
+  "compilerOptions": {
+    // Target and Module Configuration
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    // Strict Type Checking
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Module Resolution
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    // Emit Configuration
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+
+    // JavaScript Support
+    "allowJs": false,
+    "checkJs": false,
+
+    // Interop Constraints
+    "skipLibCheck": true,
+
+    // Path Mapping (alias configuration)
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/stores/*": ["./src/stores/*"],
+      "@/types/*": ["./src/types/*"],
+      "@/composables/*": ["./src/composables/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/locales/*": ["./src/locales/*"],
+      "@/lib/*": ["./src/lib/*"]
+    },
+
+    // Vue-specific
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+  },
+
+  // Include patterns for TypeScript files
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.d.ts",
+    "vite.config.ts",
+    "eslint.config.js"
+  ],
+
+  // Exclude patterns
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ],
+
+  // Vue-specific configuration
+  "vueCompilerOptions": {
+    "target": 3.4,
+    "extensions": [".vue"],
+    "experimentalRuntimeMode": "runtime-dom"
+  }
+}

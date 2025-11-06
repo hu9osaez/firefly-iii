@@ -37,10 +37,10 @@ Este documento convierte el plan de migración de 32 semanas en un checklist ver
 - [X] Configurar transformAssetUrls para Vue templates
 
 ### 1.3 Configuración de TypeScript
-- [ ] Crear `resources/assets/v3/tsconfig.json` con configuración strict
-- [ ] Configurar paths para alias `@/*`
-- [ ] Configurar target ESNext y moduleResolution bundler
-- [ ] Configurar include patterns para archivos TypeScript
+- [X] Crear `resources/assets/v3/tsconfig.json` con configuración strict
+- [X] Configurar paths para alias `@/*`
+- [X] Configurar target ESNext y moduleResolution bundler
+- [X] Configurar include patterns para archivos TypeScript
 
 ### 1.4 Middleware de Inertia
 - [ ] Crear/actualizar `app/Http/Middleware/HandleInertiaRequests.php`
