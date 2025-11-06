@@ -54,15 +54,15 @@ Este documento convierte el plan de migración de 32 semanas en un checklist ver
 - [X] Crear tipos TypeScript para todos los stores
 
 ### 1.6 Estructura de Directorios Vue + TypeScript
-- [ ] Crear estructura completa de directorios v3
-- [ ] Configurar `resources/assets/v3/src/main.ts` como entry point
-- [ ] Crear directorio `types/` con definiciones TypeScript
-- [ ] Crear directorio `components/` organizado por funcionalidad
-- [ ] Crear directorio `pages/` para páginas Inertia
-- [ ] Crear directorio `composables/` para custom hooks
-- [ ] Crear directorio `utils/` para utilidades
-- [ ] Crear directorio `locales/` para internacionalización
-- [ ] Crear directorio `lib/` para configuración
+- [X] Crear estructura completa de directorios v3
+- [X] Configurar `resources/assets/v3/src/main.ts` como entry point
+- [X] Crear directorio `types/` con definiciones TypeScript
+- [X] Crear directorio `components/` organizado por funcionalidad
+- [X] Crear directorio `pages/` para páginas Inertia
+- [X] Crear directorio `composables/` para custom hooks
+- [X] Crear directorio `utils/` para utilidades
+- [X] Crear directorio `locales/` para internacionalización
+- [X] Crear directorio `lib/` para configuración
 
 ### 1.7 Configuración de Workspace NPM
 - [ ] Configurar scripts en package.json principal para workspaces
