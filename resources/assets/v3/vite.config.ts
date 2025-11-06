@@ -21,7 +21,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
+      'vue': 'vue/dist/vue.esm-bundler.js',
     },
+  },
+  define: {
+    __VUE_OPTIONS_API__: false,
+    __VUE_PROD_DEVTOOLS__: false,
   },
   server: {
     host: '0.0.0.0',

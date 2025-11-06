@@ -48,10 +48,10 @@ Este documento convierte el plan de migración de 32 semanas en un checklist ver
 - [X] Integrar con sistema de autenticación existente
 
 ### 1.5 Configuración de Pinia Stores
-- [ ] Crear `resources/assets/v3/src/stores/appStore.ts` con estado de aplicación
-- [ ] Crear `resources/assets/v3/src/stores/accountsStore.ts` con estado de cuentas
-- [ ] Configurar persistencia de estado si es necesario
-- [ ] Crear tipos TypeScript para todos los stores
+- [X] Crear `resources/assets/v3/src/stores/appStore.ts` con estado de aplicación
+- [X] Crear `resources/assets/v3/src/stores/accountsStore.ts` con estado de cuentas
+- [X] Configurar persistencia de estado si es necesario
+- [X] Crear tipos TypeScript para todos los stores
 
 ### 1.6 Estructura de Directorios Vue + TypeScript
 - [ ] Crear estructura completa de directorios v3
