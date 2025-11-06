@@ -10,31 +10,31 @@ Este documento convierte el plan de migración de 32 semanas en un checklist ver
 ### 1.1 Configuración de InertiaJS 2 y Stack Moderno
 
 #### Instalación de Dependencias Backend
-- [ ] Instalar InertiaJS Laravel: `composer require inertiajs/inertia-laravel`
-- [ ] Configurar middleware HandleInertiaRequests
-- [ ] Actualizar configuración de Laravel para soportar Inertia
+- [X] Instalar InertiaJS Laravel: `composer require inertiajs/inertia-laravel`
+- [X] Configurar middleware HandleInertiaRequests
+- [X] Actualizar configuración de Laravel para soportar Inertia
 
 #### Configuración de Workspace NPM
-- [ ] Agregar `resources/assets/v3` al array de workspaces en package.json principal
-- [ ] Crear `resources/assets/v3/package.json` con dependencias modernas
-- [ ] Configurar scripts de desarrollo para v3
+- [X] Agregar `resources/assets/v3` al array de workspaces en package.json principal
+- [X] Crear `resources/assets/v3/package.json` con dependencias modernas
+- [X] Configurar scripts de desarrollo para v3
 
 #### Instalación de Dependencias Frontend v3
-- [ ] `npm install vue vue-tsc @inertiajs/vue3 @vitejs/plugin-vue laravel-vite-plugin`
-- [ ] `npm install typescript`
-- [ ] `npm install pinia`
-- [ ] `npm install primevue @primeuix/themes`
-- [ ] `npm install dayjs`
-- [ ] `npm install vue-i18n`
-- [ ] `npm install @formkit/vue @formkit/i18n`
-- [ ] `npm install @vueuse/motion`
-- [ ] `npm install clsx`
+- [X] `npm install vue vue-tsc @inertiajs/vue3 @vitejs/plugin-vue laravel-vite-plugin`
+- [X] `npm install typescript`
+- [X] `npm install pinia`
+- [X] `npm install primevue @primeuix/themes`
+- [X] `npm install dayjs`
+- [X] `npm install vue-i18n`
+- [X] `npm install @formkit/vue @formkit/i18n`
+- [X] `npm install @vueuse/motion`
+- [X] `npm install clsx`
 
 ### 1.2 Configuración de Vite para Vue + TypeScript
-- [ ] Crear `resources/assets/v3/vite.config.ts` con configuración completa
-- [ ] Configurar alias `@` para `resources/assets/v3/src`
-- [ ] Configurar plugins de Vue y Laravel Vite
-- [ ] Configurar transformAssetUrls para Vue templates
+- [X] Crear `resources/assets/v3/vite.config.ts` con configuración completa
+- [X] Configurar alias `@` para `resources/assets/v3/src`
+- [X] Configurar plugins de Vue y Laravel Vite
+- [X] Configurar transformAssetUrls para Vue templates
 
 ### 1.3 Configuración de TypeScript
 - [ ] Crear `resources/assets/v3/tsconfig.json` con configuración strict
