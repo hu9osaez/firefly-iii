@@ -16,7 +16,9 @@ export const useAppStore = defineStore('app', () => {
   const page = usePage<SharedData>();
 
   // Computed properties from Inertia shared data
-  const darkMode = computed(() => page.props.preferences?.darkMode ?? 'browser');
+  const darkMode = computed(
+    () => page.props.preferences?.darkMode ?? 'browser'
+  );
   const language = computed(() => page.props.preferences?.language ?? 'en_US');
   const locale = computed(() => page.props.preferences?.locale ?? 'equal');
   const appName = computed(() => page.props.app.name);
@@ -46,7 +48,9 @@ export const useAppStore = defineStore('app', () => {
     sidebarOpen.value = value;
   };
 
-  const addNotification = (notification: Omit<Notification, 'id' | 'created_at'>) => {
+  const addNotification = (
+    notification: Omit<Notification, 'id' | 'created_at'>
+  ) => {
     const newNotification: Notification = {
       ...notification,
       id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
@@ -58,7 +62,11 @@ export const useAppStore = defineStore('app', () => {
     notifications.value.push(newNotification);
 
     // Auto-remove non-persistent notifications
-    if (!newNotification.persistent && newNotification.timeout && newNotification.timeout > 0) {
+    if (
+      !newNotification.persistent &&
+      newNotification.timeout &&
+      newNotification.timeout > 0
+    ) {
       setTimeout(() => {
         removeNotification(newNotification.id);
       }, newNotification.timeout);
@@ -66,7 +74,7 @@ export const useAppStore = defineStore('app', () => {
   };
 
   const removeNotification = (id: string) => {
-    const index = notifications.value.findIndex(n => n.id === id);
+    const index = notifications.value.findIndex((n) => n.id === id);
     if (index > -1) {
       notifications.value.splice(index, 1);
     }
@@ -139,7 +147,10 @@ export const useAppStore = defineStore('app', () => {
   };
 
   // Utility functions
-  const formatCurrency = (amount: string | number, currencyCode?: string): string => {
+  const formatCurrency = (
+    amount: string | number,
+    currencyCode?: string
+  ): string => {
     const numAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
     const currency = page.props.currency;
 
@@ -155,13 +166,29 @@ export const useAppStore = defineStore('app', () => {
     }).format(numAmount);
   };
 
-  const formatDate = (date: string | Date, format: 'short' | 'medium' | 'long' = 'medium'): string => {
+  const formatDate = (
+    date: string | Date,
+    format: 'short' | 'medium' | 'long' = 'medium'
+  ): string => {
     const dateObj = typeof date === 'string' ? new Date(date) : date;
 
     const optionsMap = {
-      short: { year: '2-digit' as const, month: 'short' as const, day: 'numeric' as const },
-      medium: { year: 'numeric' as const, month: 'short' as const, day: 'numeric' as const },
-      long: { year: 'numeric' as const, month: 'long' as const, day: 'numeric' as const, weekday: 'long' as const },
+      short: {
+        year: '2-digit' as const,
+        month: 'short' as const,
+        day: 'numeric' as const,
+      },
+      medium: {
+        year: 'numeric' as const,
+        month: 'short' as const,
+        day: 'numeric' as const,
+      },
+      long: {
+        year: 'numeric' as const,
+        month: 'long' as const,
+        day: 'numeric' as const,
+        weekday: 'long' as const,
+      },
     };
     const options = optionsMap[format];
 

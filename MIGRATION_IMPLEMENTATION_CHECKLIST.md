@@ -65,9 +65,9 @@ Este documento convierte el plan de migración de 32 semanas en un checklist ver
 - [X] Crear directorio `lib/` para configuración
 
 ### 1.7 Configuración de Workspace NPM
-- [ ] Configurar scripts en package.json principal para workspaces
-- [ ] Configurar postinstall hooks para patch-package
-- [ ] Verificar que todos los workspaces funcionen independientemente
+- [X] Configurar scripts en package.json principal para workspaces
+- [X] Configurar postinstall hooks para patch-package
+- [X] Verificar que todos los workspaces funcionen independientemente
 
 ---
 

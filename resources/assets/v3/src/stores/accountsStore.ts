@@ -9,7 +9,7 @@ import type {
   AccountFormData,
   AccountBalance,
   Transaction,
-  ApiResponse
+  ApiResponse,
 } from '@/types/stores';
 import { useAppStore } from './appStore';
 
@@ -27,25 +27,31 @@ export const useAccountsStore = defineStore('accounts', () => {
 
   // Computed
   const assetAccounts = computed(() =>
-    accounts.value.filter(account => account.type === 'Asset account')
+    accounts.value.filter((account) => account.type === 'Asset account')
   );
 
   const expenseAccounts = computed(() =>
-    accounts.value.filter(account => account.type === 'Expense account')
+    accounts.value.filter((account) => account.type === 'Expense account')
   );
 
   const revenueAccounts = computed(() =>
-    accounts.value.filter(account => account.type === 'Revenue account')
+    accounts.value.filter((account) => account.type === 'Revenue account')
   );
 
   const liabilityAccounts = computed(() =>
-    accounts.value.filter(account =>
-      ['Debt', 'Loan', 'Mortgage', 'Credit card', 'Liability credit account'].includes(account.type)
+    accounts.value.filter((account) =>
+      [
+        'Debt',
+        'Loan',
+        'Mortgage',
+        'Credit card',
+        'Liability credit account',
+      ].includes(account.type)
     )
   );
 
   const activeAccounts = computed(() =>
-    accounts.value.filter(account => account.active)
+    accounts.value.filter((account) => account.active)
   );
 
   const totalBalance = computed(() => {
@@ -86,19 +92,23 @@ export const useAccountsStore = defineStore('accounts', () => {
       clearError();
 
       // Use Inertia to fetch accounts
-      router.get('/api/v1/accounts', {}, {
-        onSuccess: (page: any) => {
-          const response = page.props.data as ApiResponse<Account[]>;
-          accounts.value = response.data;
-        },
-        onError: (errors: any) => {
-          setError('Failed to fetch accounts');
-          console.error('Error fetching accounts:', errors);
-        },
-        onFinish: () => {
-          setLoading(false);
-        },
-      });
+      router.get(
+        '/api/v1/accounts',
+        {},
+        {
+          onSuccess: (page: any) => {
+            const response = page.props.data as ApiResponse<Account[]>;
+            accounts.value = response.data;
+          },
+          onError: (errors: any) => {
+            setError('Failed to fetch accounts');
+            console.error('Error fetching accounts:', errors);
+          },
+          onFinish: () => {
+            setLoading(false);
+          },
+        }
+      );
     } catch (err) {
       setError('Failed to fetch accounts');
       console.error('Error fetching accounts:', err);
@@ -113,31 +123,37 @@ export const useAccountsStore = defineStore('accounts', () => {
       clearError();
 
       return new Promise((resolve, reject) => {
-        router.get(`/api/v1/accounts/${id}`, {}, {
-          onSuccess: (page: any) => {
-            const response = page.props.data as ApiResponse<Account>;
-            const account = response.data;
+        router.get(
+          `/api/v1/accounts/${id}`,
+          {},
+          {
+            onSuccess: (page: any) => {
+              const response = page.props.data as ApiResponse<Account>;
+              const account = response.data;
 
-            // Update the account in the list if it exists
-            const index = accounts.value.findIndex(a => a.id === account.id);
-            if (index > -1) {
-              accounts.value[index] = account;
-            } else {
-              accounts.value.push(account);
-            }
+              // Update the account in the list if it exists
+              const index = accounts.value.findIndex(
+                (a) => a.id === account.id
+              );
+              if (index > -1) {
+                accounts.value[index] = account;
+              } else {
+                accounts.value.push(account);
+              }
 
-            currentAccount.value = account;
-            resolve(account);
-          },
-          onError: (errors: any) => {
-            setError(`Failed to fetch account ${id}`);
-            console.error('Error fetching account:', errors);
-            reject(errors);
-          },
-          onFinish: () => {
-            setLoading(false);
-          },
-        });
+              currentAccount.value = account;
+              resolve(account);
+            },
+            onError: (errors: any) => {
+              setError(`Failed to fetch account ${id}`);
+              console.error('Error fetching account:', errors);
+              reject(errors);
+            },
+            onFinish: () => {
+              setLoading(false);
+            },
+          }
+        );
       });
     } catch (err) {
       setError(`Failed to fetch account ${id}`);
@@ -148,7 +164,9 @@ export const useAccountsStore = defineStore('accounts', () => {
   };
 
   // Create account
-  const createAccount = async (accountData: AccountFormData): Promise<Account | null> => {
+  const createAccount = async (
+    accountData: AccountFormData
+  ): Promise<Account | null> => {
     try {
       setLoading(true);
       clearError();
@@ -189,7 +207,10 @@ export const useAccountsStore = defineStore('accounts', () => {
   };
 
   // Update account
-  const updateAccount = async (id: number, accountData: Partial<AccountFormData>): Promise<Account | null> => {
+  const updateAccount = async (
+    id: number,
+    accountData: Partial<AccountFormData>
+  ): Promise<Account | null> => {
     try {
       setLoading(true);
       clearError();
@@ -201,7 +222,7 @@ export const useAccountsStore = defineStore('accounts', () => {
             const updatedAccount = response.data;
 
             // Update the account in the list
-            const index = accounts.value.findIndex(a => a.id === id);
+            const index = accounts.value.findIndex((a) => a.id === id);
             if (index > -1) {
               accounts.value[index] = updatedAccount;
             }
@@ -246,7 +267,7 @@ export const useAccountsStore = defineStore('accounts', () => {
         router.delete(`/api/v1/accounts/${id}`, {
           onSuccess: () => {
             // Remove from accounts list
-            const index = accounts.value.findIndex(a => a.id === id);
+            const index = accounts.value.findIndex((a) => a.id === id);
             if (index > -1) {
               const account = accounts.value[index];
               const accountName = account?.name || 'Unknown Account';
@@ -288,18 +309,24 @@ export const useAccountsStore = defineStore('accounts', () => {
   };
 
   // Fetch account balance
-  const fetchAccountBalance = async (id: number): Promise<AccountBalance | null> => {
+  const fetchAccountBalance = async (
+    id: number
+  ): Promise<AccountBalance | null> => {
     try {
-      router.get(`/api/v1/accounts/${id}/balance`, {}, {
-        onSuccess: (page: any) => {
-          const response = page.props.data as ApiResponse<AccountBalance>;
-          const balance = response.data;
-          balances.value[id] = balance;
-        },
-        onError: (errors: any) => {
-          console.error('Error fetching account balance:', errors);
-        },
-      });
+      router.get(
+        `/api/v1/accounts/${id}/balance`,
+        {},
+        {
+          onSuccess: (page: any) => {
+            const response = page.props.data as ApiResponse<AccountBalance>;
+            const balance = response.data;
+            balances.value[id] = balance;
+          },
+          onError: (errors: any) => {
+            console.error('Error fetching account balance:', errors);
+          },
+        }
+      );
 
       return balances.value[id] || null;
     } catch (err) {
@@ -309,18 +336,25 @@ export const useAccountsStore = defineStore('accounts', () => {
   };
 
   // Fetch recent transactions for account
-  const fetchRecentTransactions = async (id: number, limit = 10): Promise<Transaction[]> => {
+  const fetchRecentTransactions = async (
+    id: number,
+    limit = 10
+  ): Promise<Transaction[]> => {
     try {
-      router.get(`/api/v1/accounts/${id}/transactions`, { limit }, {
-        onSuccess: (page: any) => {
-          const response = page.props.data as ApiResponse<Transaction[]>;
-          const transactions = response.data;
-          recentTransactions.value[id] = transactions;
-        },
-        onError: (errors: any) => {
-          console.error('Error fetching recent transactions:', errors);
-        },
-      });
+      router.get(
+        `/api/v1/accounts/${id}/transactions`,
+        { limit },
+        {
+          onSuccess: (page: any) => {
+            const response = page.props.data as ApiResponse<Transaction[]>;
+            const transactions = response.data;
+            recentTransactions.value[id] = transactions;
+          },
+          onError: (errors: any) => {
+            console.error('Error fetching recent transactions:', errors);
+          },
+        }
+      );
 
       return recentTransactions.value[id] || [];
     } catch (err) {
@@ -336,7 +370,7 @@ export const useAccountsStore = defineStore('accounts', () => {
 
   // Get account by ID
   const getAccountById = (id: number): Account | undefined => {
-    return accounts.value.find(account => account.id === id);
+    return accounts.value.find((account) => account.id === id);
   };
 
   // Reset store

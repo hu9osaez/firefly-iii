@@ -1,9 +1,17 @@
 {
   "scripts": {
     "postinstall": "patch-package --error-on-fail",
+    "dev:v1": "npm run development --workspace=resources/assets/v1",
+    "dev:v2": "npm run dev --workspace=resources/assets/v2",
     "dev:v3": "npm run dev --workspace=resources/assets/v3",
+    "build:v1": "npm run production --workspace=resources/assets/v1",
+    "build:v2": "npm run build --workspace=resources/assets/v2",
     "build:v3": "npm run build --workspace=resources/assets/v3",
-    "type-check:v3": "npm run type-check --workspace=resources/assets/v3"
+    "type-check:v3": "npm run type-check --workspace=resources/assets/v3",
+    "lint:v3": "npm run lint --workspace=resources/assets/v3",
+    "install:all": "npm install && npm install --workspaces",
+    "clean:all": "npm run clean --workspaces --if-present",
+    "test:workspaces": "npm run test --workspaces --if-present"
   },
   "workspaces": [
     "resources/assets/v1",
