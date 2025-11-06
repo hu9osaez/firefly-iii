@@ -43,9 +43,9 @@ Este documento convierte el plan de migración de 32 semanas en un checklist ver
 - [X] Configurar include patterns para archivos TypeScript
 
 ### 1.4 Middleware de Inertia
-- [ ] Crear/actualizar `app/Http/Middleware/HandleInertiaRequests.php`
-- [ ] Configurar shared data: auth user y flash messages
-- [ ] Integrar con sistema de autenticación existente
+- [X] Crear/actualizar `app/Http/Middleware/HandleInertiaRequests.php`
+- [X] Configurar shared data: auth user y flash messages
+- [X] Integrar con sistema de autenticación existente
 
 ### 1.5 Configuración de Pinia Stores
 - [ ] Crear `resources/assets/v3/src/stores/appStore.ts` con estado de aplicación
