@@ -74,13 +74,13 @@ Este documento convierte el plan de migración de 32 semanas en un checklist ver
 ## Fase 2: Migración de Componentes Core (Semanas 3-10)
 
 ### 2.1 Layout Principal con TypeScript y PrimeVue
-- [ ] Crear `AppLayout.vue` con estructura principal
-- [ ] Implementar Header component con navegación
-- [ ] Implementar Sidebar component con menú
-- [ ] Implementar Footer component
-- [ ] Implementar Breadcrumbs component
-- [ ] Configurar animaciones con @vueuse/motion
-- [ ] Integrar vue-i18n para textos internacionalizados
+- [X] Crear `AppLayout.vue` con estructura principal
+- [X] Implementar Header component con navegación
+- [X] Implementar Sidebar component con menú
+- [X] Implementar Footer component
+- [X] Implementar Breadcrumbs component
+- [X] Configurar animaciones con @vueuse/motion
+- [X] Integrar vue-i18n para textos internacionalizados
 
 ### 2.2 Dashboard con TypeScript y Estado Moderno
 - [ ] Crear `Dashboard/Index.vue` como página principal

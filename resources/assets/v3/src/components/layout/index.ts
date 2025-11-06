@@ -1,8 +1,8 @@
 // Layout components for Firefly III v3
 // Export layout-related components
 
-// Main layout components will be exported here
-// Example: export { default as AppLayout } from './AppLayout.vue';
-
-// Placeholder export to make this a valid module
-export {};
+export { default as AppLayout } from './AppLayout.vue';
+export { default as AppHeader } from './AppHeader.vue';
+export { default as AppSidebar } from './AppSidebar.vue';
+export { default as AppFooter } from './AppFooter.vue';
+export { default as AppBreadcrumbs } from './AppBreadcrumbs.vue';

@@ -1,0 +1,36 @@
+{
+  "navigation": {
+    "dashboard": "Dashboard",
+    "accounts": "Accounts",
+    "transactions": "Transactions",
+    "budgets": "Budgets",
+    "reports": "Reports",
+    "admin": "Administration"
+  },
+  "accounts": {
+    "all": "All Accounts",
+    "create": "Create Account"
+  },
+  "transactions": {
+    "all": "All Transactions",
+    "create": "Create Transaction"
+  },
+  "budgets": {
+    "all": "All Budgets",
+    "create": "Create Budget"
+  },
+  "user": {
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "logout": "Logout"
+  },
+  "footer": {
+    "copyright": "© {year} Firefly III",
+    "version": "Version {version}"
+  },
+  "common": {
+    "create": "Create",
+    "edit": "Edit",
+    "show": "Show"
+  }
+}
